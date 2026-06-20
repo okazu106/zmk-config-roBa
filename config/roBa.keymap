@@ -133,10 +133,6 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
-            trackball {
-                layers = <5>;
-                input-processors = <&zip_xy_to_scroll_mapper>;
-            };
         };
 
         layer_6 {
