@@ -48,9 +48,10 @@
             key-positions = <24 25>;
         };
 
-        Layer5 {
-            bindings = <&mo 5>;
+　　　　　combo_scroll_layer {
+            timeout-ms = <40>;
             key-positions = <8 9>;
+            bindings = <&mo 5>;
         };
     };
 
