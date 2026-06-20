@@ -1,6 +1,12 @@
 #include "roBa.dtsi"
 #include <input/processors.dtsi>
 
+&zip_temp_layer {
+    excluded-positions = <
+        18 // J
+        20 // L
+    >;
+
 &default_transform {
     col-offset = <6>;
 };
