@@ -37,7 +37,7 @@
             layers = <5>;
             /* ZMK標準の「XYからスクロールへの変換」と「スクロール減速」を組み合わせます */
             input-processors = <&zip_xy_to_scroll_mapper>, 
-                               <&zip_scroll_scaler 1 10>;
+                               <&zip_scroll_scaler 1 50>;
             process-next;
         };
 
