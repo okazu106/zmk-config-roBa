@@ -35,16 +35,28 @@
         // 縦スクロール専用（レイヤー5）
         scroller_v {
             layers = <5>;
-            input-processors = <
-                &zip_x_scaler 0 1,          // ① 横(X)のブレを消す
-                &zip_xy_to_scroll_mapper,   // ② スクロールに変換する
-                &zip_scroll_scaler 1 10;// ← ★ここが「速度を1/3にする」コードです！
-            process-next; 
-            >;
+            /* ZMK標準の「XYからスクロールへの変換」と「スクロール減速」を組み合わせます */
+            input-processors = <&zip_xy_to_scroll_mapper>, 
+                               <&zip_scroll_scaler 1 10>;
+            process-next;
         };
 
-        /* 2. 通常レイヤー（0）またはマウスレイヤー（4）の時だけ、オートマウスを動かす */
-        /* これにより、レイヤー5にいる時はオートマウス（レイヤー4への強制移動）が作動しなくなります */
+        // 横スクロール専用（レイヤー7）
+        scroller_h {
+            layers = <7>;
+            input-processors = <&zip_xy_to_scroll_mapper>, 
+                               <&zip_scroll_scaler 1 10>;
+            process-next;
+        };
+
+        // カーソル減速専用（レイヤー8）
+        cursor_slow {
+            layers = <8>;
+            input-processors = <&zip_xy_scaler 1 3>; // カーソルの速度を1/3にする
+            process-next;
+        };
+
+        // 通常レイヤー（0）またはマウスレイヤー（4）の時だけ、オートマウスを動かす
         automouse {
             layers = <0 4>;
             input-processors = <&zip_temp_layer 4 10000>;
