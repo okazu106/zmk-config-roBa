@@ -52,7 +52,7 @@
         // カーソル減速専用（レイヤー8）
         cursor_slow {
             layers = <8>;
-            input-processors = <&zip_xy_scaler 1 3>; // カーソルの速度を1/3にする
+            input-processors = <&zip_xy_scaler 1 10>; // カーソルの速度を1/3にする
             process-next;
         };
 
