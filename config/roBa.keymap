@@ -33,14 +33,9 @@
             key-positions = <11 12>;
         };
 
-        Layer7 {
-            bindings = <&mo 5>;
-            key-positions = <20 21>;
-        };
-
         Layer5 {
-            bindings = <&mo 7>;
-            key-positions = <8 9>;
+            bindings = <&mo 5>;
+            key-positions = <9 8>;
         };
     };
 
