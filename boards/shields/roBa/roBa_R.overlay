@@ -31,11 +31,19 @@
         status = "okay";
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        input-processors = <&zip_temp_layer 4 10000>;
-    };
-    scroller {
-        layers = <5>;
-        input-processors = <&zip_xy_to_scroll_mapper>;
+
+        /* 1. レイヤー5（SCROLL）にいる時は、スクロール機能を最優先にする */
+        scroller {
+            layers = <5>;
+            input-processors = <&zip_xy_to_scroll_mapper>;
+        };
+
+        /* 2. 通常レイヤー（0）またはマウスレイヤー（4）の時だけ、オートマウスを動かす */
+        /* これにより、レイヤー5にいる時はオートマウス（レイヤー4への強制移動）が作動しなくなります */
+        automouse {
+            layers = <0 4>;
+            input-processors = <&zip_temp_layer 4 10000>;
+        };
     };
 };
 
