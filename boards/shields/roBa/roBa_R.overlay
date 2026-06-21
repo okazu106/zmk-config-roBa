@@ -32,11 +32,14 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-        /* 1. レイヤー5（SCROLL）にいる時は、スクロール機能を最優先にする */
-        scroller {
+        // 縦スクロール専用（レイヤー5）
+        scroller_v {
             layers = <5>;
-            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 2>;
-            process-next; 
+            input-processors = <
+                &zip_x_scaler 0 1          // ① 横(X)のブレを消す
+                &zip_xy_to_scroll_mapper   // ② スクロールに変換する
+                &zip_scroll_scaler 1 3     // ← ★ここが「速度を1/3にする」コードです！
+            >;
         };
 
         /* 2. 通常レイヤー（0）またはマウスレイヤー（4）の時だけ、オートマウスを動かす */
