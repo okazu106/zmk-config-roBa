@@ -35,7 +35,8 @@
         /* 1. レイヤー5（SCROLL）にいる時は、スクロール機能を最優先にする */
         scroller {
             layers = <5>;
-            input-processors = <&zip_xy_to_scroll_mapper>;
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 2>;
+            process-next; 
         };
 
         /* 2. 通常レイヤー（0）またはマウスレイヤー（4）の時だけ、オートマウスを動かす */
