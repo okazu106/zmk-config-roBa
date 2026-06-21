@@ -41,14 +41,6 @@
             process-next;
         };
 
-        // 横スクロール専用（レイヤー7）
-        scroller_h {
-            layers = <7>;
-            input-processors = <&zip_xy_to_scroll_mapper>, 
-                               <&zip_scroll_scaler 1 10>;
-            process-next;
-        };
-
         // カーソル減速専用（レイヤー8）
         cursor_slow {
             layers = <8>;
