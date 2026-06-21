@@ -38,7 +38,8 @@
             input-processors = <
                 &zip_x_scaler 0 1          // ① 横(X)のブレを消す
                 &zip_xy_to_scroll_mapper   // ② スクロールに変換する
-                &zip_scroll_scaler 1 10     // ← ★ここが「速度を1/10にする」コードです！
+                &zip_scroll_scaler 1 3     // ← ★ここが「速度を1/3にする」コードです！
+                &zip_scroll_scaler 1 10     // ← ★ここが「速度を1/3にする」コードです！
             >;
         };
 
